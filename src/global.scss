@@ -9,18 +9,79 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
 /* Core CSS required for Ionic components to work properly */
+
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
+
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
+
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+//
+//
+//MODALS
+.overview-modal-css .modal-wrapper {
+    height: 100%;
+    width: 40%;
+    top: 0%;
+    right: 0%;
+    border-radius: 0;
+    position: absolute;
+    display: block;
+}
+
+.service-modal-css .modal-wrapper {
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}
+
+.pay-request-modal-css .modal-wrapper {
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}
+
+.information-modal-css .modal-wrapper {
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}
+
+.table-setting-css .modal-wrapper {
+    height: 50%;
+    width: 90%;
+    top: 25%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}
+
+.logout-confirm-css .modal-wrapper {
+    height: 50%;
+    width: 60%;
+    top: 25%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}

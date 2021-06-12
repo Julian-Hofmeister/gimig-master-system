@@ -1,0 +1,48 @@
+ion-content {
+    --background: rgb(248, 248, 248);
+}
+
+ion-fab-button {
+    margin: 10px;
+    --box-shadow: none;
+    --background: white;
+}
+
+ion-icon {
+    color: rgb(85, 85, 85);
+}
+
+h2 {
+    margin: 25px 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: rgb(68, 68, 68);
+}
+
+p.title {
+    margin: 10px 10px;
+    text-transform: uppercase;
+    color: rgb(109, 109, 109);
+}
+
+p.heading {
+    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgb(109, 109, 109);
+}
+
+ion-list {
+    --ion-background-color: transparent !important;
+    --ion-border-color: transparent !important;
+}
+
+ion-button {
+    width: 80%;
+    margin: 20px 0px;
+    // letter-spacing: 1px;
+    --border-radius: 100px;
+    --background: coral;
+    --box-shadow: none
+}

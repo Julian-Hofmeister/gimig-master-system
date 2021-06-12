@@ -1,0 +1,21 @@
+<ion-content>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="light" (click)="onCloseModal()">
+            <ion-icon name="close-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h2>Tisch {{ table.tableNumber }} möchte bezahlen</h2>
+                <p>vor {{ passedTime | date: "m" }}min</p>
+                <ion-row class="detail-row">
+                    <p>Details:</p>
+
+                    <p>{{ paysTogether }} | {{ paysCache }}</p>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-button size="large" (click)="acceptPayRequest()">Annehmen</ion-button>
+</ion-content>

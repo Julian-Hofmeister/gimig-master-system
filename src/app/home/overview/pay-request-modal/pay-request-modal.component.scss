@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ion-grid {
+    width: 100%;
+    height: 90%;
+}
+
+ion-row {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+ion-col {
+    justify-content: center;
+    text-align: center;
+}
+
+ion-button {
+    width: 100%;
+    height: 20%;
+    --border-radius: 0 0 15px 15px;
+    position: absolute;
+    bottom: 0;
+    --background: coral;
+}
+
+ion-fab-button {
+    margin: 10px;
+    --box-shadow: none;
+    --background: white;
+}
+
+ion-icon {
+    color: rgb(85, 85, 85);
+}
+
+h2 {
+    letter-spacing: 2px;
+    color: rgb(95, 95, 95);
+}
+
+p {
+    margin: 0 30px;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+    color: rgb(95, 95, 95);
+    // text-transform: uppercase;
+}
+
+.detail-row {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,41 @@
+<ion-content>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="onCloseModal()">
+            <ion-icon name="close-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h2>Tisch {{ table.tableNumber }}</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <p class="heading">Bestellung aufnehmen</p>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <ion-button (click)="acceptAll()" *ngIf="newOrders.length > 0">
+                Gesamte Bestellung annehemen
+            </ion-button>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-list *ngFor="let order of newOrders">
+                    <app-order-card [order]="order"></app-order-card>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <p class="title" *ngIf="acceptedOrders.length > 0">Bereits bestellt:</p>
+                <ion-list *ngFor="let order of acceptedOrders">
+                    <app-order-card [order]="order"></app-order-card>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <p class="heading">Rechnung: {{ bill }}€</p>
+        </ion-row>
+    </ion-grid>
+</ion-content>

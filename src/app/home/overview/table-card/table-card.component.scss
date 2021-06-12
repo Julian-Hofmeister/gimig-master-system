@@ -1,0 +1,24 @@
+ion-card {
+    width: 18rem;
+    height: 12rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: none !important;
+    margin: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item .item-content {
+    background-color: transparent !important;
+}
+
+.item-complex .item-content,
+.item {
+    background-color: rgb(255, 255, 255)
+}
+
+h1 {
+    color: rgb(87, 87, 87);
+}

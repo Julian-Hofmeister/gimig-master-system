@@ -1,0 +1,38 @@
+<ion-content scrollY="false">
+    <ion-grid>
+        <ion-row class="main-row">
+            <ion-col size="3.2" class="main-col">
+                <ion-content class="color-background">
+                    <ion-row class="ion-justify-content-center">
+                        <ion-list *ngFor="let table of activeTables">
+                            <app-table-card [table]="table" (click)="openTable(table)"></app-table-card>
+                        </ion-list>
+                    </ion-row>
+                    <ion-row *ngIf="activeTables.length === 0" class="ion-align-items-center main-row">
+                        <ion-col>
+                            <p>Keine Anfragen vorhanden</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-content>
+            </ion-col>
+            <ion-col size="8.8">
+                <ion-content class="background">
+                    <ion-grid class="myOverlay">
+                        <ion-row>
+                            <ion-col class="main-col">
+                                <ion-row class="ion-justify-content-between">
+                                    <ion-list *ngFor="let table of inActiveTables">
+                                        <app-table-card [table]="table" (click)="openTable(table)"></app-table-card>
+                                    </ion-list>
+                                    <!-- <app-table-card [table]="table"></app-table-card> -->
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-content>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<!-- // IS USED INDICATION WITH SMALL DOTT IN CORNER -->
