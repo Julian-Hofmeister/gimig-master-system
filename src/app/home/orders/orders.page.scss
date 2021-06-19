@@ -1,0 +1,39 @@
+// // ion-col {
+// //     border: 2px red solid;
+// // }
+// .main-col {
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+// }
+// h2 {
+//     text-transform: uppercase;
+//     letter-spacing: 1px;
+//     font-size: 1.2rem;
+// }
+// ion-content {
+//     --background: rgb(236, 236, 236);
+// }
+// ion-list {
+//     --ion-background-color: transparent !important;
+//     --ion-border-color: transparent !important;
+// }
+.color-background {
+    --background: rgb(236, 236, 236);
+}
+
+p {
+    color: rgb(87, 87, 87)
+}
+
+.main-col {
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.main-row {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}

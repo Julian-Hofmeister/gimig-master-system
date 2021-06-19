@@ -60,8 +60,7 @@ export class OverviewPage implements OnInit {
         if (
           fetchedTable.orderRequest ||
           fetchedTable.payRequest ||
-          fetchedTable.serviceRequest ||
-          fetchedTable.resetRequest
+          fetchedTable.serviceRequest
         ) {
           this.activeTables.push(fetchedTable);
         } else {

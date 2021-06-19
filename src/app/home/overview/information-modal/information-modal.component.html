@@ -5,84 +5,86 @@
         </ion-fab-button>
     </ion-fab>
     <ion-grid>
+        <ion-row class="ion-align-items-end">
+            <h2>Tisch {{ table.tableNumber }}</h2>
+            <!--
+            <ion-row class="ion-align-items-end" *ngIf="table.status === 'normal'">
+                <p class="detail">active</p>
+                <ion-icon name="checkmark-done-outline" style="color: rgb(41, 197, 111)"></ion-icon>
+            </ion-row>
+            <ion-row class="ion-align-items-center" *ngIf="table.status === 'unused'">
+                <p class="detail">unused</p>
+                <ion-icon name="duplicate-outline" style="color: rgb(4, 0, 255)"></ion-icon>
+            </ion-row>
+            <ion-row class="ion-align-items-center" *ngIf="table.status === 'offline'">
+                <p class="detail">offline</p>
+                <ion-icon name="alert-outline" style="color: red"></ion-icon>
+            </ion-row> -->
+        </ion-row>
+        <br />
+        <br />
         <ion-row>
-            <ion-col>
-                <h2>Tisch {{ table.tableNumber }}</h2>
+            <ion-col size="10.66" offset=".66">
+                <ion-button (click)="resetTable()">
+                    <ion-label> Vorgang Abschließen und Gimig zurücksetzen</ion-label>
+                </ion-button>
             </ion-col>
         </ion-row>
-
         <ion-row>
-            <ion-col size="5" offset=".75">
+            <ion-col size="5" offset=".66">
                 <ion-row class="ion-justify-content-start">
-                    <p class="heading">Bestellung</p>
+                    <p class="heading">Speisen</p>
                 </ion-row>
 
-                <ion-list *ngFor="let order of acceptedOrders">
+                <ion-list *ngFor="let order of food">
                     <app-order-card [order]="order"></app-order-card>
                 </ion-list>
             </ion-col>
-            <ion-col size="5" offset=".5">
+            <ion-col size="5" offset=".66">
                 <ion-row class="ion-justify-content-start">
-                    <p class="heading">Tisch {{ table.tableNumber }}</p>
+                    <p class="heading">Getränke</p>
                 </ion-row>
-                <ion-row class="ion-justify-content-start">
-                    <ion-col>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Akkustand:</p>
-                            </ion-col>
-                            <ion-col>
-                                <p>30%</p>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Status:</p>
-                            </ion-col>
 
-                            <ion-col>
-                                <p>Normal</p>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Verbrachte Zeit:</p>
-                            </ion-col>
-
-                            <ion-col>
-                                <p>54min</p>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Bestellte Gerichte:</p>
-                            </ion-col>
-
-                            <ion-col>
-                                <p>6</p>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Bestellte Getränke:</p>
-                            </ion-col>
-
-                            <ion-col>
-                                <p>6</p>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-col>
-                                <p>Rechnung bisher:</p>
-                            </ion-col>
-
-                            <ion-col>
-                                <p>120€</p>
-                            </ion-col>
-                        </ion-row>
-                    </ion-col>
-                </ion-row>
+                <ion-list *ngFor="let order of beverages">
+                    <app-order-card [order]="order"></app-order-card>
+                </ion-list>
             </ion-col>
         </ion-row>
+        <ion-row class="ion-justify-content-center">
+            <p class="info">
+                Rechnung: {{ bill | currency: "EUR":"symbol":"":"fr" }}
+            </p>
+        </ion-row>
+        <!-- <ion-row>
+            <ion-col size="5" offset="">
+                <ion-row class="ion-justify-content-between">
+                    <p>Bestellte Getränke:</p>
+                    <p>6</p>
+                </ion-row>
+                <ion-row class="ion-justify-content-between">
+                    <p>Bestellte Speisen:</p>
+                    <p>6</p>
+                </ion-row>
+                <ion-row class="ion-justify-content-between">
+                    <p>Rechnung:</p>
+                    <p>120€</p>
+                </ion-row>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+            <ion-col size="5">
+                <ion-row class="ion-justify-content-between">
+                    <p>Besetzt seit:</p>
+                    <p>54min</p>
+                </ion-row>
+                <ion-row class="ion-justify-content-between">
+                    <p>Status:</p>
+                    <p>Normal</p>
+                </ion-row>
+                <ion-row class="ion-justify-content-between">
+                    <p>Akkustand:</p>
+                    <p>30%</p>
+                </ion-row>
+            </ion-col>
+        </ion-row> -->
     </ion-grid>
 </ion-content>

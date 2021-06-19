@@ -1,11 +1,10 @@
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Order } from './order.model';
 import { Table } from './table.model';
@@ -14,15 +13,22 @@ import { Table } from './table.model';
   providedIn: 'root',
 })
 export class TableService {
-  tableNumber = localStorage.getItem('tableNumber');
+  loadedOrders: Order[];
   tables: Observable<any[]>;
-  tableCollection: AngularFirestoreCollection<Table>;
-  tableDocument: AngularFirestoreDocument<Table>;
-  orderCollection: AngularFirestoreCollection<Order>;
   orders: Observable<any[]>;
+  orderSub: Subscription;
+
+  tableDocument: AngularFirestoreDocument<Table>;
+  tableCollection: AngularFirestoreCollection<Table>;
+  orderCollection: AngularFirestoreCollection<Order>;
+
   orderDoc: AngularFirestoreDocument<Order>;
 
-  path = this.afs.collection('restaurants').doc('julian@web.de');
+  order: Order;
+
+  tableNumber = localStorage.getItem('tableNumber');
+  userEmail = JSON.parse(localStorage.getItem('user')).email;
+  path = this.afs.collection('restaurants').doc(this.userEmail);
 
   constructor(public afs: AngularFirestore) {}
 
@@ -67,6 +73,24 @@ export class TableService {
     return this.orders;
   }
 
+  // GET ITEMS
+  getAllOrders() {
+    // GETS REFERENCE
+    this.orderCollection = this.path.collection('/orders');
+
+    // GETS ITEMS
+    this.orders = this.orderCollection.snapshotChanges().pipe(
+      map((changes) =>
+        changes.map((a) => {
+          const data = a.payload.doc.data() as Order;
+          data.id = a.payload.doc.id;
+          return data;
+        })
+      )
+    );
+    return this.orders;
+  }
+
   acceptOrder(order: Order) {
     // GET REFERENCE
     this.orderDoc = this.path.collection('orders').doc(order.id);
@@ -75,6 +99,7 @@ export class TableService {
     this.orderDoc.update({
       isAccepted: true,
       isOrdered: false,
+      acceptTimestamp: Date.now(),
     });
   }
 
@@ -115,4 +140,38 @@ export class TableService {
   //   // UPDATE ORDER TO FIRESTORE
   //   this.orderDoc.delete();
   // }
+
+  resetTable(table: Table) {
+    this.tableDocument = this.path
+      .collection('tables')
+      .doc(table.tableNumber.toString());
+
+    this.tableDocument.update({
+      resetRequest: true,
+      ableToPay: false,
+      orderRequest: false,
+      serviceRequest: false,
+      orderTime: null,
+      paysTogether: null,
+      paysCache: null,
+      isServed: false,
+      isPaid: false,
+      isAccepted: false,
+      serviceTimestamp: null,
+      payRequestTimestamp: null,
+    });
+
+    this.orderSub = this.getOrders(table).subscribe((loadedOrders) => {
+      for (const order of loadedOrders) {
+        console.log(order.id);
+        this.orderDoc = this.path.collection('orders').doc(order.id);
+        this.orderDoc.update({
+          isPaid: true,
+          payTimestamp: Date.now(),
+        });
+      }
+      console.log('end');
+      this.orderSub.unsubscribe();
+    });
+  }
 }

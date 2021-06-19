@@ -13,6 +13,8 @@ import { OrderCardComponent } from './order-modal/order-card/order-card.componen
 import { ServiceModalComponent } from './service-modal/service-modal.component';
 import { PayRequestModalComponent } from './pay-request-modal/pay-request-modal.component';
 import { InformationModalComponent } from './information-modal/information-modal.component';
+import '@angular/common/locales/global/en-GB';
+import { AllOrderModalComponent } from './order-modal/all-order-modal/all-order-modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, OverviewPageRoutingModule],
@@ -24,6 +26,7 @@ import { InformationModalComponent } from './information-modal/information-modal
     ServiceModalComponent,
     PayRequestModalComponent,
     InformationModalComponent,
+    AllOrderModalComponent,
   ],
 })
 export class OverviewPageModule {}

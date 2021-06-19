@@ -19,6 +19,8 @@ export class Order {
     public price: number,
 
     public tableNumber: number,
-    public timestamp: number
+    public orderTimestamp: number,
+    public acceptTimestamp: number = null,
+    public payTimestamp: number = null
   ) {}
 }

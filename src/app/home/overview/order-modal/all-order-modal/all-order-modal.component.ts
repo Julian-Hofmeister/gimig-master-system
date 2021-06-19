@@ -2,24 +2,24 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Order } from '../order.model';
-import { Table } from '../table.model';
-import { TableService } from '../table.service';
+import { Order } from 'src/app/home/order.model';
+import { Table } from 'src/app/home/table.model';
+import { TableService } from 'src/app/home/table.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.page.html',
-  styleUrls: ['./orders.page.scss'],
+  selector: 'app-all-order-modal',
+  templateUrl: './all-order-modal.component.html',
+  styleUrls: ['./all-order-modal.component.scss'],
 })
-export class OrdersPage implements OnInit {
+export class AllOrderModalComponent implements OnInit {
+  @Input() table: Table;
+
   loadedOrders: Order[] = [];
   newOrders: Order[] = [];
   acceptedOrders: Order[] = [];
 
-  newFood: Order[] = [];
-  newBeverages: Order[] = [];
-
-  doubleTapdetector: string;
+  dishes: Order[] = [];
+  beverages: Order[] = [];
 
   bill = 0;
 
@@ -34,7 +34,7 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
     // GET ITEMS
     this.streamSub = this.tableService
-      .getAllOrders()
+      .getOrders(this.table)
       .subscribe((loadedOrders) => {
         // EMPTY LOCAL ITEMS
         this.loadedOrders = [];
@@ -65,28 +65,22 @@ export class OrdersPage implements OnInit {
             order.price,
 
             order.tableNumber,
-            order.orderTimestamp,
-            order.paytimestamp,
-            order.acceptTimestamp
+            order.timestamp
           );
 
-          // PUSH NEW ITEM
-
           if (fetchedOrder.isFood) {
-            this.newFood.push(fetchedOrder);
+            this.dishes.push(fetchedOrder);
           } else {
-            this.newBeverages.push(fetchedOrder);
+            this.beverages.push(fetchedOrder);
           }
-          // CHECK IF ORDER IS ACCEPTED
-          if (!fetchedOrder.isAccepted) {
-            this.newOrders.push(fetchedOrder);
-            // CHECK IF UNACCPETED ORDER IS FOOD
-          } else {
-            this.acceptedOrders.push(fetchedOrder);
-          }
-          this.loadedOrders.push(fetchedOrder);
+
+          this.acceptedOrders.push(fetchedOrder);
           this.bill = this.bill + fetchedOrder.price;
         }
       });
+  }
+
+  onCloseModal() {
+    this.modalCtrl.dismiss();
   }
 }

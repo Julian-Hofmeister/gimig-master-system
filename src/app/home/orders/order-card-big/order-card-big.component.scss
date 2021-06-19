@@ -4,9 +4,11 @@
 }
 
 ion-card {
+    width: 30rem;
+    height: 7rem;
     box-shadow: none !important;
     border-radius: 10px;
-    --background: white;
+    --background: rgb(255, 255, 255);
     padding: 15px
 }
 

@@ -17,6 +17,9 @@ export class InformationModalComponent implements OnInit {
   newOrders: Order[] = [];
   acceptedOrders: Order[] = [];
 
+  beverages: Order[] = [];
+  food: Order[] = [];
+
   doubleTapdetector: string;
 
   bill = 0;
@@ -66,32 +69,26 @@ export class InformationModalComponent implements OnInit {
             order.timestamp
           );
 
-          // PUSH NEW ITEM
+          // CHECK IF PAID
+          if (!fetchedOrder.isPaid) {
+            // CHECK IF ORDER IS ACCEPTED
+            if (fetchedOrder.isAccepted) {
+              this.acceptedOrders.push(fetchedOrder);
+              if (fetchedOrder.isFood) {
+                this.food.push(fetchedOrder);
+              } else {
+                this.beverages.push(fetchedOrder);
+              }
+            }
 
-          if (!fetchedOrder.isAccepted) {
-            this.newOrders.push(fetchedOrder);
-          } else {
-            this.acceptedOrders.push(fetchedOrder);
             this.bill = this.bill + fetchedOrder.price;
           }
-          this.loadedOrders.push(fetchedOrder);
-        }
-
-        if (this.newOrders.length === 0) {
-          this.completeOrderRequest();
         }
       });
   }
 
-  acceptAll() {
-    for (const order of this.newOrders) {
-      this.tableService.acceptOrder(order);
-    }
-    this.completeOrderRequest();
-  }
-
-  completeOrderRequest() {
-    this.tableService.completeOrderRequest(this.table);
+  resetTable() {
+    this.tableService.resetTable(this.table);
   }
 
   onCloseModal() {

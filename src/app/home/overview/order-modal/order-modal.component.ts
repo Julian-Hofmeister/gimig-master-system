@@ -1,3 +1,4 @@
+import { registerLocaleData } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ModalController } from '@ionic/angular';
@@ -5,6 +6,10 @@ import { Subscription } from 'rxjs';
 import { Order } from '../../order.model';
 import { Table } from '../../table.model';
 import { TableService } from '../../table.service';
+import localeFr from '@angular/common/locales/fr';
+import { AllOrderModalComponent } from './all-order-modal/all-order-modal.component';
+
+registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'app-order-modal',
@@ -16,6 +21,9 @@ export class OrderModalComponent implements OnInit {
   loadedOrders: Order[] = [];
   newOrders: Order[] = [];
   acceptedOrders: Order[] = [];
+
+  newDishes: Order[] = [];
+  newBeverages: Order[] = [];
 
   doubleTapdetector: string;
 
@@ -63,18 +71,30 @@ export class OrderModalComponent implements OnInit {
             order.price,
 
             order.tableNumber,
-            order.timestamp
+            order.orderTimestamp,
+            order.acceptTimestamp,
+            order.payTimestamp
           );
 
           // PUSH NEW ITEM
 
-          if (!fetchedOrder.isAccepted) {
-            this.newOrders.push(fetchedOrder);
-          } else {
-            this.acceptedOrders.push(fetchedOrder);
+          // CHECK IF PAID
+          if (!fetchedOrder.isPaid) {
+            // CHECK IF ORDER IS ACCEPTED
+            if (fetchedOrder.isAccepted) {
+              this.acceptedOrders.push(fetchedOrder);
+            } else {
+              this.newOrders.push(fetchedOrder);
+              // CHECK IF FOOD
+              if (fetchedOrder.isFood) {
+                this.newDishes.push(fetchedOrder);
+              } else {
+                this.newBeverages.push(fetchedOrder);
+              }
+            }
+
             this.bill = this.bill + fetchedOrder.price;
           }
-          this.loadedOrders.push(fetchedOrder);
         }
 
         if (this.newOrders.length === 0) {
@@ -88,6 +108,19 @@ export class OrderModalComponent implements OnInit {
       this.tableService.acceptOrder(order);
     }
     this.completeOrderRequest();
+    this.onCloseModal();
+  }
+
+  viewAll(table: Table) {
+    this.modalCtrl
+      .create({
+        component: AllOrderModalComponent,
+        cssClass: 'allOrders-modal-css',
+        componentProps: { table },
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
   }
 
   completeOrderRequest() {
