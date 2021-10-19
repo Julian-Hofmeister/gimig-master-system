@@ -30,16 +30,7 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: 'tables',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./tables/tables.module').then((m) => m.TablesPageModule),
-          },
-        ],
-      },
+
       {
         path: 'orders',
         children: [
@@ -66,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home/tabs/tables',
+    redirectTo: '/home/tabs/overview',
     pathMatch: 'full',
   },
   {

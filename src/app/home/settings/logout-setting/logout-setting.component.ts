@@ -8,22 +8,27 @@ import { AuthService } from 'src/app/authentication/auth.service';
   templateUrl: './logout-setting.component.html',
   styleUrls: ['./logout-setting.component.scss'],
 })
-export class LogoutSettingComponent implements OnInit {
+export class LogoutSettingComponent {
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
   constructor(
     private modalCtrl: ModalController,
     private authService: AuthService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  //#endregion
 
-  onLogout() {
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
+  public onLogout() {
     console.log('LOGGING OUT...');
     this.authService.logout();
     this.modalCtrl.dismiss();
   }
 
-  onDismiss() {
+  public onDismiss() {
     this.modalCtrl.dismiss();
   }
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }

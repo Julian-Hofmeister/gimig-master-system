@@ -16,8 +16,8 @@
 
         <ion-row>
             <ion-col>
-                <p class="title" *ngIf="dishes.length > 0">Speisen:</p>
-                <ion-list *ngFor="let order of dishes">
+                <p class="title" *ngIf="food.length > 0">Speisen:</p>
+                <ion-list *ngFor="let order of food">
                     <app-order-card [order]="order"></app-order-card>
                 </ion-list>
             </ion-col>

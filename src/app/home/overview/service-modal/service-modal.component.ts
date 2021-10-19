@@ -9,25 +9,67 @@ import { TableService } from '../../table.service';
   styleUrls: ['./service-modal.component.scss'],
 })
 export class ServiceModalComponent implements OnInit {
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
+
   @Input() table: Table;
+
+  //#endregion
+
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
+
   passedTime: any;
+
+  //#endregion
+
+  //#region [ MEMBERS ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
 
   constructor(
     private modalCtrl: ModalController,
     private tableService: TableService
   ) {}
 
+  //#endregion
+
+  //#region [ LIFECYCLE ] /////////////////////////////////////////////////////////////////////////
+
   ngOnInit() {
     this.passedTime = Date.now() - this.table.serviceTimestamp;
-    console.log(this.passedTime);
   }
+
+  //#endregion
+
+  //#region [ EMITTER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ RECEIVER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
 
   acceptServiceRequest() {
     this.tableService.acceptServiceRequest(this.table);
     this.onCloseModal();
   }
 
+  // ----------------------------------------------------------------------------------------------
+
   onCloseModal() {
     this.modalCtrl.dismiss();
   }
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
+
+  //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }

@@ -1,27 +1,23 @@
-import { Observable } from 'rxjs';
+export interface Table {
+  tableNumber: string;
+  orderRequest: boolean;
+  payRequest: boolean;
+  serviceRequest: boolean;
 
-export class Table {
-  constructor(
-    public tableNumber: string,
-    public orderRequest: boolean,
-    public payRequest: boolean,
-    public serviceRequest: boolean,
+  orderTime: Date;
+  serviceTimestamp: number;
+  payRequestTimestamp: number;
+  status: string;
 
-    public orderTime: Date,
-    public serviceTimestamp: number,
-    public payRequestTimestamp: number,
-    public status: string,
+  ableToPay: boolean;
+  paysTogether: boolean;
+  paysCache: boolean;
 
-    public ableToPay: boolean,
-    public paysTogether: boolean,
-    public paysCache: boolean,
+  isServed: boolean;
+  isPaid: boolean;
+  isAccepted: boolean;
 
-    public isServed: boolean,
-    public isPaid: boolean,
-    public isAccepted: boolean,
+  resetRequest: boolean;
 
-    public resetRequest: boolean,
-
-    public id: string
-  ) {}
+  id: string;
 }

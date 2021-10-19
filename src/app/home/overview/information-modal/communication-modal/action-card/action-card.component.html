@@ -1,0 +1,12 @@
+<div class="action-card" (click)="onSelect()">
+    <img [src]="image" alt=" " [ngStyle]="{ opacity: isSelected ? '0.8' : '1' }" />
+    <ion-row class="centered">
+        <ion-col>
+            <h3>{{ title }}</h3>
+
+            <ion-button *ngIf="isSelected" (click)="sendMessage(message)">
+                Senden
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</div>

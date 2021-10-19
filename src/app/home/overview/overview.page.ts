@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Table } from '../table.model';
@@ -14,54 +13,114 @@ import { ServiceModalComponent } from './service-modal/service-modal.component';
   templateUrl: './overview.page.html',
   styleUrls: ['./overview.page.scss'],
 })
-export class OverviewPage implements OnInit {
-  loadedTables: Table[] = [];
+export class OverviewPage implements OnInit, OnDestroy {
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
+
   activeTables: Table[] = [];
+
   inActiveTables: Table[] = [];
 
-  // SUBS
-  private streamSub: Subscription;
+  //#endregion
+
+  //#region [ MEMBERS ] ///////////////////////////////////////////////////////////////////////////
+
+  private tableSub: Subscription;
+
+  //#endregion
+
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
 
   constructor(
-    private tableService: TableService,
-    private afStorage: AngularFireStorage,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private tableService: TableService
   ) {}
 
+  //#endregion
+
+  //#region [ LIFECYCLE ] /////////////////////////////////////////////////////////////////////////
+
   ngOnInit() {
-    // GET CATEGORIES
-    this.streamSub = this.tableService.getTables().subscribe((tables) => {
-      // EMPTY LOCAL CATEGORIES
-      this.loadedTables = [];
+    this.fetchTablesFromFirestore();
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  ngOnDestroy() {
+    this.tableSub.unsubscribe();
+  }
+
+  //#endregion
+
+  //#region [ EMITTER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ RECEIVER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
+
+  openTable(table: Table) {
+    this.modalCtrl
+      .create({
+        component: table.orderRequest
+          ? OrderModalComponent
+          : table.serviceRequest
+          ? ServiceModalComponent
+          : table.payRequest
+          ? PayRequestModalComponent
+          : InformationModalComponent,
+        cssClass: table.orderRequest
+          ? 'overview-modal-css'
+          : table.serviceRequest
+          ? 'service-modal-css'
+          : table.payRequest
+          ? 'pay-request-modal-css'
+          : 'information-modal-css',
+        componentProps: { table },
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
+
+  //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
+
+  private fetchTablesFromFirestore() {
+    this.tableSub = this.tableService.getTables().subscribe((allTables) => {
       this.activeTables = [];
       this.inActiveTables = [];
 
-      // DEFINE NEW CATEGORY
-      for (const table of tables) {
-        const fetchedTable = new Table(
-          table.tableNumber,
-          table.orderRequest,
-          table.payRequest,
-          table.serviceRequest,
-          table.orderTime,
-          table.serviceTimestamp,
-          table.payRequestTimestamp,
-          table.status,
-          table.ableToPay,
-          table.paysTogether,
-          table.paysCache,
-          table.isServed,
-          table.isPaid,
-          table.isAccepted,
-          table.resetRequest,
-          table.id
-        );
+      for (const table of allTables) {
+        const fetchedTable: Table = {
+          tableNumber: table.tableNumber,
+          orderRequest: table.orderRequest,
+          payRequest: table.payRequest,
+          serviceRequest: table.serviceRequest,
+          orderTime: table.orderTime,
+          serviceTimestamp: table.serviceTimestamp,
+          payRequestTimestamp: table.payRequestTimestamp,
+          status: table.status,
+          ableToPay: table.ableToPay,
+          paysTogether: table.paysTogether,
+          paysCache: table.paysCache,
+          isServed: table.isServed,
+          isPaid: table.isPaid,
+          isAccepted: table.isAccepted,
+          resetRequest: table.resetRequest,
+          id: table.id,
+        };
 
-        if (
-          fetchedTable.orderRequest ||
-          fetchedTable.payRequest ||
-          fetchedTable.serviceRequest
-        ) {
+        if (table.orderRequest || table.payRequest || table.serviceRequest) {
           this.activeTables.push(fetchedTable);
         } else {
           this.inActiveTables.push(fetchedTable);
@@ -70,52 +129,7 @@ export class OverviewPage implements OnInit {
     });
   }
 
-  openTable(table: Table) {
-    console.log('CLICKED');
-    if (table.orderRequest) {
-      this.modalCtrl
-        .create({
-          component: OrderModalComponent,
-          cssClass: 'overview-modal-css',
-          componentProps: { table },
-        })
-        .then((modalEl) => {
-          modalEl.present();
-        });
-    } else if (table.serviceRequest) {
-      this.modalCtrl
-        .create({
-          component: ServiceModalComponent,
-          cssClass: 'service-modal-css',
-          componentProps: { table },
-        })
-        .then((modalEl) => {
-          modalEl.present();
-        });
-    } else if (table.payRequest) {
-      this.modalCtrl
-        .create({
-          component: PayRequestModalComponent,
-          cssClass: 'pay-request-modal-css',
-          componentProps: { table },
-        })
-        .then((modalEl) => {
-          modalEl.present();
-        });
-    } else if (
-      !table.payRequest &&
-      !table.serviceRequest &&
-      !table.orderRequest
-    ) {
-      this.modalCtrl
-        .create({
-          component: InformationModalComponent,
-          cssClass: 'information-modal-css',
-          componentProps: { table },
-        })
-        .then((modalEl) => {
-          modalEl.present();
-        });
-    }
-  }
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }

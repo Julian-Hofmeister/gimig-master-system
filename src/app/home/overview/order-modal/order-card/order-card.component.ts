@@ -8,20 +8,49 @@ import { TableService } from 'src/app/home/table.service';
   styleUrls: ['./order-card.component.scss'],
 })
 export class OrderCardComponent implements OnInit {
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
+
   @Input() order: Order;
 
-  doubleTapDetector = false;
+  //#endregion
 
-  constructor(private tableService: TableService) {}
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ MEMBERS ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
+
+  constructor() {}
+
+  //#endregion
+
+  //#region [ LIFECYCLE ] /////////////////////////////////////////////////////////////////////////
 
   ngOnInit() {}
 
-  acceptOrder() {
-    if (this.doubleTapDetector === true) {
-      this.tableService.acceptOrder(this.order);
-      this.doubleTapDetector = false;
-    } else {
-      this.doubleTapDetector = true;
-    }
-  }
+  //#endregion
+
+  //#region [ EMITTER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ RECEIVER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
+
+  //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }

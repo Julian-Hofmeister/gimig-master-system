@@ -1,26 +1,26 @@
 import { Observable } from 'rxjs';
 
-export class Order {
-  constructor(
-    public amount: number,
-    public description: string,
-    public id: string,
-    public imagePath: Observable<any>,
+export interface Order {
+  amount: number;
+  description: string;
+  id: string;
+  imagePath: Observable<any>;
 
-    public isAccepted: boolean,
-    public isFood: boolean,
-    public isOrdered: boolean,
-    public isPaid: boolean,
-    public isServed: boolean,
-    public isVisible: boolean,
+  isAccepted: boolean;
+  isFood: boolean;
+  isOrdered: boolean;
+  isPaid: boolean;
+  isServed: boolean;
+  isVisible: boolean;
 
-    public name: string,
-    public parentId: string,
-    public price: number,
+  name: string;
+  parentId: string;
+  price: number;
 
-    public tableNumber: number,
-    public orderTimestamp: number,
-    public acceptTimestamp: number = null,
-    public payTimestamp: number = null
-  ) {}
+  tableNumber: number;
+  orderTimestamp: number;
+  acceptTimestamp: number;
+  payTimestamp: number;
+
+  isFinished: boolean;
 }

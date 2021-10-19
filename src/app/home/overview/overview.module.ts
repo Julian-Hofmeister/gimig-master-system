@@ -15,6 +15,9 @@ import { PayRequestModalComponent } from './pay-request-modal/pay-request-modal.
 import { InformationModalComponent } from './information-modal/information-modal.component';
 import '@angular/common/locales/global/en-GB';
 import { AllOrderModalComponent } from './order-modal/all-order-modal/all-order-modal.component';
+import { ResetConfirmModalComponent } from './information-modal/reset-confirm-modal/reset-confirm-modal.component';
+import { CommunicationModalComponent } from './information-modal/communication-modal/communication-modal.component';
+import { ActionCardComponent } from './information-modal/communication-modal/action-card/action-card.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, OverviewPageRoutingModule],
@@ -27,6 +30,9 @@ import { AllOrderModalComponent } from './order-modal/all-order-modal/all-order-
     PayRequestModalComponent,
     InformationModalComponent,
     AllOrderModalComponent,
+    ResetConfirmModalComponent,
+    CommunicationModalComponent,
+    ActionCardComponent,
   ],
 })
 export class OverviewPageModule {}

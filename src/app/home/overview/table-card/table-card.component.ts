@@ -6,12 +6,16 @@ import { Table } from '../../table.model';
   templateUrl: './table-card.component.html',
   styleUrls: ['./table-card.component.scss'],
 })
-export class TableCardComponent implements OnInit {
+export class TableCardComponent {
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
+
   @Input() table: Table = null;
+
+  //#endregion
+
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
 
   tableNumber: string;
 
-  constructor() {}
-
-  ngOnInit() {}
+  //#endregion
 }

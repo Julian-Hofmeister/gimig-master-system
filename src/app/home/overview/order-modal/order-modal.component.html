@@ -34,12 +34,12 @@
         </ion-row>
 
         <ion-row class="ion-justify-content-center">
-            <ion-button (click)="acceptAll()" *ngIf="newOrders.length > 0">
+            <ion-button (click)="acceptAll()" *ngIf="newDishes.length > 0 || newBeverages.length > 0">
                 <ion-label> Bestellung annehemen</ion-label>
             </ion-button>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-            <ion-button class="secondary" (click)="viewAll(table)" *ngIf="newOrders.length > 0">
+            <ion-button class="secondary" (click)="viewAll(table)" *ngIf="newDishes.length > 0 || newBeverages.length > 0">
                 <ion-label> Gesamte Bestellung ansehen</ion-label>
             </ion-button>
         </ion-row>

@@ -1,0 +1,21 @@
+<ion-content>
+    <ion-grid>
+        <ion-row id="title-row" class="ion-justify-content-between">
+            <h2>TISCH {{ table.tableNumber }}</h2>
+            <p id="detail">Nachrichten</p>
+        </ion-row>
+        <ion-row id="card-row" class="ion-justify-content-center">
+            <ion-row>
+                <app-action-card title="Getränke nachbestellen" image="assets/images/bier.jpeg" message="reorderBeverages" [tableNumber]="table.tableNumber"></app-action-card>
+                <app-action-card title="Dessert anbieten" image="assets/images/dessert.jpeg" message="offerDessert" [tableNumber]="table.tableNumber"></app-action-card>
+            </ion-row>
+            <ion-row>
+                <app-action-card title="Guten Appetit wünschen" image="assets/images/pizza.jpeg" message="showGreetings" [tableNumber]="table.tableNumber"></app-action-card>
+                <app-action-card title="Bewerten ĺassen" image="assets/images/bewerten.jpeg" message="showFeedback" [tableNumber]="table.tableNumber"></app-action-card>
+            </ion-row>
+        </ion-row>
+        <!-- <ion-row>
+            <ion-button> An Tisch 5 Senden </ion-button>
+        </ion-row> -->
+    </ion-grid>
+</ion-content>

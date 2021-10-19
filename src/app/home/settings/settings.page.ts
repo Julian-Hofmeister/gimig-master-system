@@ -8,14 +8,38 @@ import { LogoutSettingComponent } from './logout-setting/logout-setting.componen
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage implements OnInit {
-  constructor(
-    private navCtrl: NavController,
-    private modalCtrl: ModalController,
-    private router: Router
-  ) {}
+export class SettingsPage {
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
 
-  ngOnInit() {}
+  //#endregion
+
+  //#region [ MEMBERS ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
+
+  constructor(private modalCtrl: ModalController, private router: Router) {}
+
+  //#endregion
+
+  //#region [ LIFECYCLE ] /////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ EMITTER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ RECEIVER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
 
   openLogoutSetting() {
     this.modalCtrl
@@ -28,7 +52,19 @@ export class SettingsPage implements OnInit {
       });
   }
 
+  // ----------------------------------------------------------------------------------------------
+
   closeSettings() {
     this.router.navigate(['/', 'home']);
   }
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
+
+  //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }
