@@ -1,0 +1,60 @@
+<ion-content class="background">
+    <ion-grid>
+        <ion-row class="main-row">
+            <ion-col>
+                <h1>Abgeschlossene Bestellungen</h1>
+            </ion-col>
+            <ion-col size="6">
+                <div class="date-picker">
+                    <ion-row>
+                        <ion-icon name="chevron-back-outline" (click)="onPreviousDay()"></ion-icon>
+                        <p>Datum: {{ selectedTimestamp | date:'dd.MM.yy' }}</p>
+                        <ion-icon name="chevron-forward-outline" (click)="onNextDay()"></ion-icon>
+                    </ion-row>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="content-row">
+            <ion-col>
+                <ion-row>
+                    <ion-col size="2">
+                        <p>Uhrzeit</p>
+                    </ion-col>
+                    <ion-col size="2">
+                        <p>Tisch</p>
+                    </ion-col>
+                    <ion-col size=".5"></ion-col>
+                    <ion-col size="5.5">
+                        <p class="align-left">Gericht/Getränk</p>
+                    </ion-col>
+                    <ion-col size="2">
+                        <p>Preis</p>
+                    </ion-col>
+                </ion-row>
+                <hr />
+                <ion-list *ngFor="let order of orders">
+                    <div class="order-item">
+                        <ion-row>
+                            <ion-col size="2">
+                                <p>{{order.orderTimestamp | date:'HH:mm:ss'}}</p>
+                            </ion-col>
+                            <ion-col size="2">
+                                <p>Tisch {{order.tableNumber}}</p>
+                            </ion-col>
+                            <ion-col size=".5"></ion-col>
+                            <ion-col size="5.5">
+                                <p class="align-left">{{order.name}}</p>
+                            </ion-col>
+                            <ion-col size="2">
+                                <p>{{order.price | currency: "EUR":"symbol":"":"fr"}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-list>
+
+                <ion-button *ngIf="orders.length" (click)="onDownloadPDF()">
+                    Protokoll als PDF herunterladen</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

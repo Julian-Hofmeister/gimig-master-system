@@ -9,16 +9,6 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'menu',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./menu/menu.module').then((m) => m.MenuPageModule),
-          },
-        ],
-      },
-      {
         path: 'overview',
         children: [
           {
@@ -30,7 +20,18 @@ const routes: Routes = [
           },
         ],
       },
-
+      {
+        path: 'protocol',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./protocol/protocol.module').then(
+                (m) => m.ProtocolPageModule
+              ),
+          },
+        ],
+      },
       {
         path: 'orders',
         children: [
@@ -76,9 +77,9 @@ const routes: Routes = [
       import('./settings/settings.module').then((m) => m.SettingsPageModule),
   },
   {
-    path: 'menu',
+    path: 'protocol',
     loadChildren: () =>
-      import('./menu/menu.module').then((m) => m.MenuPageModule),
+      import('./protocol/protocol.module').then((m) => m.ProtocolPageModule),
   },
 ];
 

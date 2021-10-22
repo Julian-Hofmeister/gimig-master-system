@@ -10,28 +10,81 @@ import { TableService } from '../table.service';
   styleUrls: ['./orders.page.scss'],
 })
 export class OrdersPage implements OnInit, OnDestroy {
-  // # SUBSCRIPTIONS
-  orderSub = new Subscription();
+  //#region [ BINDINGS ] //////////////////////////////////////////////////////////////////////////
 
-  // # LISTS
+  //#endregion
+
+  //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
+
   newOrders: Order[] = [];
+
   acceptedOrders: Order[] = [];
 
   newFood: Order[] = [];
+
   newBeverages: Order[] = [];
 
-  // # PROPERTIES
   bill = 0;
 
-  // # CONSTRUCTOR
+  currentTime: Date;
+
+  intervalId;
+
+  //#endregion
+
+  //#region [ MEMBERS ] ///////////////////////////////////////////////////////////////////////////
+
+  private orderSub = new Subscription();
+
+  //#endregion
+
+  //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
+
   constructor(
     private afStorage: AngularFireStorage,
-    // # SERVICES
     private tableService: TableService
   ) {}
 
-  // # ON INIT
+  //#endregion
+
+  //#region [ LIFECYCLE ] /////////////////////////////////////////////////////////////////////////
+
   ngOnInit() {
+    this.getOrders();
+
+    // Using Basic Interval
+    this.intervalId = setInterval(() => {
+      this.currentTime = new Date();
+    }, 1000);
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  ngOnDestroy() {
+    this.orderSub.unsubscribe();
+
+    clearInterval(this.intervalId);
+  }
+
+  //#endregion
+
+  //#region [ EMITTER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ RECEIVER ] ///////////////////////////////////////////////////////////////////////////
+
+  //#endregion
+
+  //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
+
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
+
+  //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
+
+  private getOrders() {
     this.orderSub = this.tableService.getOrders().subscribe((allOrders) => {
       this.newOrders = [];
       this.acceptedOrders = [];
@@ -79,7 +132,7 @@ export class OrdersPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.orderSub.unsubscribe();
-  }
+  // ----------------------------------------------------------------------------------------------
+
+  //#endregion
 }

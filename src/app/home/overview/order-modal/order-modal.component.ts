@@ -159,17 +159,17 @@ export class OrderModalComponent implements OnInit, OnDestroy {
 
           console.log(fetchedOrder.isAccepted);
 
-          // if (!order.isAccepted) {
-          console.log(fetchedOrder);
+          if (!order.isAccepted) {
+            console.log(fetchedOrder);
 
-          this.bill = this.bill + fetchedOrder.price;
+            this.bill = this.bill + fetchedOrder.price;
 
-          if (fetchedOrder.isFood) {
-            this.newDishes.push(fetchedOrder);
-          } else {
-            this.newBeverages.push(fetchedOrder);
+            if (fetchedOrder.isFood) {
+              this.newDishes.push(fetchedOrder);
+            } else {
+              this.newBeverages.push(fetchedOrder);
+            }
           }
-          // }
         }
       });
   }

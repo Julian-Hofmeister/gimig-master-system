@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/authentication/auth.service';
 })
 export class LogoutSettingComponent {
   //#region [ CONSTRUCTORS ] //////////////////////////////////////////////////////////////////////
+
   constructor(
     private modalCtrl: ModalController,
     private authService: AuthService,
@@ -19,13 +20,16 @@ export class LogoutSettingComponent {
   //#endregion
 
   //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
-  public onLogout() {
+
+  onLogout() {
     console.log('LOGGING OUT...');
     this.authService.logout();
     this.modalCtrl.dismiss();
   }
 
-  public onDismiss() {
+  // ----------------------------------------------------------------------------------------------
+
+  onDismiss() {
     this.modalCtrl.dismiss();
   }
   // ----------------------------------------------------------------------------------------------

@@ -12,10 +12,16 @@ export class TableService {
   //#region [ PROPERTIES ] /////////////////////////////////////////////////////////////////////////
 
   tables: Observable<any[]>;
+
   orders: Observable<any[]>;
 
+  // ----------------------------------------------------------------------------------------------
+
   loadedOrders: Order[];
+
   order: Order;
+
+  // ----------------------------------------------------------------------------------------------
 
   tableNumber = localStorage.getItem('tableNumber');
 
@@ -25,7 +31,9 @@ export class TableService {
 
   path = this.afs.collection('restaurants').doc(this.userEmail);
 
-  orderCollection = this.path.collection('orders');
+  orderCollection = this.path.collection('orders', (ref) =>
+    ref.orderBy('orderTimestamp')
+  );
 
   tableCollection = this.path.collection('tables', (ref) =>
     ref.orderBy('tableNumber')
@@ -62,7 +70,9 @@ export class TableService {
   getOrders(table?: Table): Observable<any[]> {
     const orderCollection = table
       ? this.path.collection('orders', (ref) =>
-          ref.where('tableNumber', '==', table.tableNumber.toString())
+          ref
+            .where('tableNumber', '==', table.tableNumber.toString())
+            .orderBy('orderTimestamp')
         )
       : this.orderCollection;
 
@@ -110,16 +120,28 @@ export class TableService {
   // ----------------------------------------------------------------------------------------------
 
   acceptOrder(order: Order) {
-    const orderDoc = this.path
+    const orderCartDoc = this.path
       .collection('tables')
-      .doc(this.tableNumber)
+      .doc(order.tableNumber.toString())
       .collection('orderedCart')
       .doc(order.id);
 
-    orderDoc.update({
+    const allOrdersDoc = this.path
+      .collection('orders')
+      .doc(order.orderTimestamp.toString());
+
+    const acceptTimestamp = Date.now();
+
+    orderCartDoc.update({
       isAccepted: true,
       isOrdered: false,
-      acceptTimestamp: Date.now(),
+      acceptTimestamp,
+    });
+
+    allOrdersDoc.update({
+      isAccepted: true,
+      isOrdered: false,
+      acceptTimestamp,
     });
   }
 

@@ -2,7 +2,7 @@
     <ion-grid>
         <ion-row id="title-row" class="ion-justify-content-between">
             <h2>TISCH {{ table.tableNumber }}</h2>
-            <p id="detail">Nachrichten</p>
+            <p>Nachrichten</p>
         </ion-row>
         <ion-row id="card-row" class="ion-justify-content-center">
             <ion-row>
@@ -14,8 +14,5 @@
                 <app-action-card title="Bewerten ĺassen" image="assets/images/bewerten.jpeg" message="showFeedback" [tableNumber]="table.tableNumber"></app-action-card>
             </ion-row>
         </ion-row>
-        <!-- <ion-row>
-            <ion-button> An Tisch 5 Senden </ion-button>
-        </ion-row> -->
     </ion-grid>
 </ion-content>

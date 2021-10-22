@@ -13,6 +13,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
+// import { FileOpener } from '@ionic-native/file-opener/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,8 +28,12 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    // FileOpener,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

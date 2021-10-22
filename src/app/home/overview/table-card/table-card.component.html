@@ -1,3 +1,6 @@
 <ion-card *ngIf="table != null" class="item">
     <h1>Tisch {{ table.tableNumber }}</h1>
+    <div class="order notification" *ngIf="table.orderRequest"></div>
+    <div class="pay notification" *ngIf="table.payRequest"></div>
+    <div class="service notification" *ngIf="table.serviceRequest"></div>
 </ion-card>

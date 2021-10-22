@@ -32,8 +32,6 @@ export class AuthService {
 
         localStorage.setItem('user', JSON.stringify(res.user));
 
-        console.log('IS LOGGED IN: ' + this.isLoggedIn);
-
         const user = new User(res.user.email);
 
         this.user.next(user);

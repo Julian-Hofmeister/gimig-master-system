@@ -8,6 +8,7 @@ ion-card {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .item .item-content {
@@ -21,4 +22,27 @@ ion-card {
 
 h1 {
     color: rgb(87, 87, 87);
+}
+
+.notification {
+    width: 20px;
+    height: 20px;
+    border-radius: 5rem;
+    margin: .7rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.order {
+    background-color: salmon;
+}
+
+.pay {
+    background-color: skyblue;
+}
+
+.service {
+    background-color: rgb(255, 23, 216);
 }

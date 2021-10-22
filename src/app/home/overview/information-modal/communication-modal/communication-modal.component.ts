@@ -45,14 +45,6 @@ export class CommunicationModalComponent implements OnInit {
 
   //#region [ PUBLIC ] ////////////////////////////////////////////////////////////////////////////
 
-  // selectCard(message: string) {
-  //   // this.reorderBeverages = false;
-  //   // this.offerDessert = false;
-  //   // this.sendGreetings = false;
-  //   // this.showReview = false;
-  //   this.selectedMessage = message;
-  //   console.log(this.selectedMessage);
-  // }
   // ----------------------------------------------------------------------------------------------
 
   //#endregion

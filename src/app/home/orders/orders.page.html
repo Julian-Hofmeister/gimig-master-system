@@ -1,32 +1,32 @@
-<!-- <ion-content>
+<ion-content class="background">
     <ion-grid>
-        <ion-row>
-            <ion-col size="6" class="main-col">
-                <h2>Neue Gerichte</h2>
-                <ion-list *ngFor="let order of newFood">
-                    <app-order-card-big [order]="order"></app-order-card-big>
-                </ion-list>
-            </ion-col>
-            <ion-col size="6" class="main-col">
-                <h2>Angenommene Getränke</h2>
-                <ion-list *ngFor="let order of newBeverages">
-                    <app-order-card-big [order]="order"></app-order-card-big>
-                </ion-list>
+        <ion-row class="main-row">
+            <ion-row class="title-row">
+                <h1>Speisen</h1>
+                <div class="vertical-divider"></div>
+                <h2>Getränke</h2>
+            </ion-row>
+            <h3>{{ currentTime | date:'HH:mm:ss' }}</h3>
+        </ion-row>
+        <ion-row class="content-row">
+            <ion-col>
+                <p>Neue Bestellungen</p>
+                <div class="order-item">
+                    <ion-row>
+                        <ion-row>
+                            <p>Tisch 10</p>
+                            <div class="vertical-divider"></div>
+                            <p>2x Gemischter Beilagensalat</p>
+                        </ion-row>
+                        <ion-row class="end-row">
+                            <p>vor 10min</p>
+                            <div class="check-box">
+                                <ion-icon name="checkmark-outline"></ion-icon>
+                            </div>
+                        </ion-row>
+                    </ion-row>
+                </div>
             </ion-col>
         </ion-row>
     </ion-grid>
-</ion-content> -->
-
-<ion-header>
-    <ion-toolbar>
-        <ion-title>BESTELLUNGEN</ion-title>
-    </ion-toolbar>
-</ion-header>
-
-<ion-content class="color-background">
-    <ion-row class="ion-align-items-center main-row main-col">
-        <ion-col>
-            <p>Diese Seite ist in der aktuellen Testversion noch nicht verfügbar.</p>
-        </ion-col>
-    </ion-row>
 </ion-content>

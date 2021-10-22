@@ -1,0 +1,95 @@
+.background {
+    --background: rgb(248, 248, 248);
+}
+
+.main-row {
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem;
+    ion-col {
+        margin: 0;
+    }
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2e2e2e;
+        margin: 0;
+        margin-left: .5rem;
+    }
+    .date-picker {
+        // border: 3px solid #40BB96;
+        border-radius: 5rem;
+        padding: .8rem;
+        width: 100%;
+        ion-row {
+            align-items: center;
+            justify-content: flex-end;
+            ion-icon {
+                font-size: 1.8rem;
+                margin: 0 .5rem;
+            }
+            p {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin: 0 1rem;
+                margin-top: .1rem;
+            }
+        }
+    }
+}
+
+.content-row {
+    margin: 1rem;
+    margin-top: 3rem;
+    .align-left {
+        text-align: left;
+    }
+    hr {
+        background-color: salmon;
+        height: 2px;
+        width: 100%;
+    }
+    ion-list {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        .order-item {
+            ion-row {
+                border-bottom: 1px solid #555;
+                ion-col {
+                    text-align: center;
+                    // border-right: 1px solid #555;
+                    p {
+                        margin: .5rem 0;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                    }
+                }
+                .align-left {
+                    text-align: start;
+                }
+            }
+        }
+    }
+    ion-col {
+        text-align: end;
+        ion-row {
+            p {
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 0;
+            }
+            .align-left {
+                text-align: left;
+            }
+        }
+    }
+    ion-button {
+        margin: 3rem 0;
+        height: 4rem;
+        --border-radius: 5rem;
+        --background: salmon;
+        --box-shadow: none;
+    }
+}
