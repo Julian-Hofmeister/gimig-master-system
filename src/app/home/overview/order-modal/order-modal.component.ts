@@ -8,6 +8,7 @@ import { Table } from '../../table.model';
 import { TableService } from '../../table.service';
 import localeFr from '@angular/common/locales/fr';
 import { AllOrderModalComponent } from './all-order-modal/all-order-modal.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -107,6 +108,22 @@ export class OrderModalComponent implements OnInit, OnDestroy {
 
   onCloseModal() {
     this.modalCtrl.dismiss();
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  onDelete(order: Order) {
+    this.onCloseModal();
+
+    this.modalCtrl
+      .create({
+        component: DeleteModalComponent,
+        cssClass: 'small-action-modal-css',
+        componentProps: { table: this.table, order },
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
   }
 
   // ----------------------------------------------------------------------------------------------

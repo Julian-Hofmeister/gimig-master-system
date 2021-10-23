@@ -19,7 +19,7 @@
             <ion-col>
                 <p class="title" *ngIf="newDishes.length > 0">Neue Gerichte:</p>
                 <ion-list *ngFor="let order of newDishes">
-                    <app-order-card [order]="order"></app-order-card>
+                    <app-order-card [order]="order" (click)="onDelete(order)"></app-order-card>
                 </ion-list>
             </ion-col>
         </ion-row>
@@ -28,7 +28,7 @@
             <ion-col>
                 <p class="title" *ngIf="newBeverages.length > 0">Neue Getränke:</p>
                 <ion-list *ngFor="let order of newBeverages">
-                    <app-order-card [order]="order"></app-order-card>
+                    <app-order-card [order]="order" (click)="onDelete(order)"></app-order-card>
                 </ion-list>
             </ion-col>
         </ion-row>

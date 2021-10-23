@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    height: 100%;
+    /* Setup */
+    position: relative;
+    vertical-align: middle;
+    .content {
+        margin: 3rem;
+        margin-top: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
+        text-align: center;
+        p {
+            font-size: 1.4rem;
+            color: rgb(56, 56, 56);
+        }
+        ion-button {
+            width: 70%;
+            height: 4rem;
+            margin-top: 1.5rem;
+            --border-radius: 5rem;
+            --background: salmon;
+            --box-shadow: none;
+        }
+        #dismiss {
+            margin-top: 0rem;
+            text-transform: uppercase;
+            color: rgb(158, 158, 158);
+            --background: nome;
+        }
+    }
+}

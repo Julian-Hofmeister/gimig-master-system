@@ -119,6 +119,26 @@ export class TableService {
 
   // ----------------------------------------------------------------------------------------------
 
+  deleteOrder(order: Order) {
+    const orderCartDoc = this.path
+      .collection('tables')
+      .doc(order.tableNumber.toString())
+      .collection('orderedCart')
+      .doc(order.id);
+
+    const allOrdersDoc = this.path
+      .collection('orders')
+      .doc(order.orderTimestamp.toString());
+
+    orderCartDoc.delete();
+
+    allOrdersDoc.delete();
+
+    this.checkIfOrderedCartIsEmpty(order);
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
   acceptOrder(order: Order) {
     const orderCartDoc = this.path
       .collection('tables')
@@ -238,6 +258,27 @@ export class TableService {
 
   //#region [ PRIVATE ] ///////////////////////////////////////////////////////////////////////////
 
+  private checkIfOrderedCartIsEmpty(order) {
+    const collectionData = this.path
+      .collection('tables')
+      .doc(order.tableNumber.toString())
+      .collection('orderedCart')
+      .get()
+      .toPromise()
+      .then((query) => query.size);
+
+    collectionData.then((collectionSize) => {
+      if (collectionSize === 0) {
+        this.path
+          .collection('tables')
+          .doc(order.tableNumber.toString())
+          .update({
+            isOrdered: false,
+            orderRequest: false,
+          });
+      }
+    });
+  }
   // ----------------------------------------------------------------------------------------------
 
   //#endregion
