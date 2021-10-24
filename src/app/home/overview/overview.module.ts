@@ -19,6 +19,7 @@ import { ResetConfirmModalComponent } from './information-modal/reset-confirm-mo
 import { CommunicationModalComponent } from './information-modal/communication-modal/communication-modal.component';
 import { ActionCardComponent } from './information-modal/communication-modal/action-card/action-card.component';
 import { DeleteModalComponent } from './order-modal/delete-modal/delete-modal.component';
+import { ReservationModalComponent } from './information-modal/reservation-modal/reservation-modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, OverviewPageRoutingModule],
@@ -35,6 +36,7 @@ import { DeleteModalComponent } from './order-modal/delete-modal/delete-modal.co
     CommunicationModalComponent,
     ActionCardComponent,
     DeleteModalComponent,
+    ReservationModalComponent,
   ],
 })
 export class OverviewPageModule {}

@@ -242,6 +242,8 @@ export class TableService {
     // });
   }
 
+  // ----------------------------------------------------------------------------------------------
+
   sendMessage(message: string, tableNumber: string) {
     console.log(tableNumber);
 
@@ -250,6 +252,16 @@ export class TableService {
     table.update({
       message,
     });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  reserveTable(table: Table, reservationTimestamp: number) {
+    const tableDocument = this.tableCollection.doc(
+      table.tableNumber.toString()
+    );
+
+    tableDocument.update({ isReserved: true, reservationTimestamp });
   }
 
   // ----------------------------------------------------------------------------------------------

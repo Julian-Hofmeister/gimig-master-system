@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="content">
+        <p>Reservierung festelgen</p>
+        <ion-datetime displayFormat="HH:mm" [minuteValues]="minuteValues" [(ngModel)]="reservationTime" placeholder="Uhrzeit wählen" (ionChange)="onChange(reservationTime)"></ion-datetime>
+
+        <!-- <div class="dismiss-btn">
+            <p id="dismiss">Abbrechen</p>
+        </div> -->
+
+        <ion-button (click)="onReserve()" [disabled]="!reservationTime">
+            Tisch reservieren
+        </ion-button>
+
+        <ion-button (click)="onDismiss()" id="dismiss"> Abbrechen </ion-button>
+    </div>
+</div>

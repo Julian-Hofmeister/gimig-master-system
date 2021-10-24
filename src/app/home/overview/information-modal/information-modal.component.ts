@@ -6,6 +6,7 @@ import { Order } from '../../order.model';
 import { Table } from '../../table.model';
 import { TableService } from '../../table.service';
 import { CommunicationModalComponent } from './communication-modal/communication-modal.component';
+import { ReservationModalComponent } from './reservation-modal/reservation-modal.component';
 import { ResetConfirmModalComponent } from './reset-confirm-modal/reset-confirm-modal.component';
 
 @Component({
@@ -109,6 +110,24 @@ export class InformationModalComponent implements OnInit, OnDestroy {
   }
 
   // ----------------------------------------------------------------------------------------------
+
+  onReserveTable(table: Table) {
+    // const reservationTime = Date.now();
+
+    // this.tableService.reserveTable(table, reservationTime);
+
+    this.modalCtrl.dismiss();
+
+    this.modalCtrl
+      .create({
+        component: ReservationModalComponent,
+        cssClass: 'small-action-modal-css',
+        componentProps: { table: this.table },
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
+  }
 
   //#endregion
 
