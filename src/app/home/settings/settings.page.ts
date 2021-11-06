@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { LogoutSettingComponent } from './logout-setting/logout-setting.component';
+import { FontModalComponent } from './font-modal/font-modal.component';
 
 @Component({
   selector: 'app-settings',
@@ -50,6 +51,58 @@ export class SettingsPage {
       .then((modalEl) => {
         modalEl.present();
       });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  openTitleModal() {
+    // this.modalCtrl
+    //   .create({
+    //     component: TitleModalComponent,
+    //     cssClass: 'logout-confirm-css',
+    //   })
+    //   .then((modalEl) => {
+    //     modalEl.present();
+    //   });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  openFontModal() {
+    // this.modalCtrl
+    //   .create({
+    //     component: FontModalComponent,
+    //     cssClass: 'logout-confirm-css',
+    //   })
+    //   .then((modalEl) => {
+    //     modalEl.present();
+    //   });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  openBackgroundImgModal() {
+    // this.modalCtrl
+    //   .create({
+    //     component: LogoutSettingComponent,
+    //     cssClass: 'logout-confirm-css',
+    //   })
+    //   .then((modalEl) => {
+    //     modalEl.present();
+    //   });
+  }
+
+  // ----------------------------------------------------------------------------------------------
+
+  openColorModal() {
+    // this.modalCtrl
+    //   .create({
+    //     component: LogoutSettingComponent,
+    //     cssClass: 'logout-confirm-css',
+    //   })
+    //   .then((modalEl) => {
+    //     modalEl.present();
+    //   });
   }
 
   // ----------------------------------------------------------------------------------------------

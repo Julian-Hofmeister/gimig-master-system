@@ -10,28 +10,49 @@
         </ion-row>
         <br />
         <br />
-        <ion-row>
+        <!-- <ion-row>
             <ion-col size="10.66" offset=".66">
                 <ion-button (click)="resetTable()">
                     <ion-label> Vorgang Abschließen und Gimig zurücksetzen</ion-label>
                 </ion-button>
             </ion-col>
-        </ion-row>
-        <ion-row>
             <ion-col size="10.66" offset=".66">
                 <ion-button id="secondary-color" (click)="onOpenCommunicationModal()">
                     <ion-label>Nachricht an Tisch senden</ion-label>
                 </ion-button>
             </ion-col>
-        </ion-row>
-        <ion-row>
             <ion-col size="10.66" offset=".66">
                 <ion-button id="tertiary-color" (click)="onReserveTable(table)">
                     <ion-label>Tisch reservieren</ion-label>
                 </ion-button>
             </ion-col>
+        </ion-row> -->
+        <ion-row class="action-row">
+            <div class="action-card" [ngStyle]="{ 'background-color': '#00A676' }" (click)="onReserveTable(table)">
+                <div class="content">
+                    <ion-row>
+                        <span class="material-icons-outlined"> bookmark_added </span>
+                        <p>Tisch Reservieren</p>
+                    </ion-row>
+                </div>
+            </div>
+            <div class="action-card" [ngStyle]="{ 'background-color': '#6096BA' }" (click)="onOpenCommunicationModal()">
+                <div class="content">
+                    <ion-row>
+                        <span class="material-icons-outlined"> chat </span>
+                        <p>Nachricht senden</p>
+                    </ion-row>
+                </div>
+            </div>
+            <div class="action-card" [ngStyle]="{ 'background-color': '#D07364' }" (click)="resetTable()">
+                <div class="content">
+                    <ion-row>
+                        <span class="material-icons"> restart_alt </span>
+                        <p>Neuer Kunde</p>
+                    </ion-row>
+                </div>
+            </div>
         </ion-row>
-
         <ion-row>
             <ion-col size="5" offset=".66">
                 <ion-row class="ion-justify-content-start">

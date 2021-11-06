@@ -29,6 +29,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 //
+@import '~material-design-icons/iconfont/material-icons.css';
+@import 'material-icons/iconfont/material-icons.css';
 //
 //MODALS
 .overview-modal-css .modal-wrapper {
@@ -122,3 +124,54 @@
     position: absolute;
     display: block;
 }
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 500;
+    src: url('/assets/fonts/Poppins-Thin.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 400;
+    src: url('/assets/fonts/Poppins-Light.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 500;
+    src: url('/assets/fonts/Poppins-Regular.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 600;
+    src: url('/assets/fonts/Poppins-Medium.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    src: url('/assets/fonts/Poppins-SemiBold.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 800;
+    src: url('/assets/fonts/Poppins-Bold.ttf');
+}
+
+// ----------------------------------------------------
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 900;
+    src: url('/assets/fonts/Poppins-ExtraBold.ttf');
+}
+
+// ----------------------------------------------------

@@ -2,7 +2,7 @@
     <ion-grid>
         <ion-row class="main-row">
             <ion-col>
-                <h1>Abgeschlossene Bestellungen</h1>
+                <h1>Bestellungen</h1>
             </ion-col>
             <ion-col size="6">
                 <div class="date-picker">
@@ -24,8 +24,11 @@
                         <p>Tisch</p>
                     </ion-col>
                     <ion-col size=".5"></ion-col>
-                    <ion-col size="5.5">
+                    <ion-col size="3.5">
                         <p class="align-left">Gericht/Getränk</p>
+                    </ion-col>
+                    <ion-col size="2">
+                        <p>Anzahl</p>
                     </ion-col>
                     <ion-col size="2">
                         <p>Preis</p>
@@ -42,8 +45,11 @@
                                 <p>Tisch {{order.tableNumber}}</p>
                             </ion-col>
                             <ion-col size=".5"></ion-col>
-                            <ion-col size="5.5">
+                            <ion-col size="3.5">
                                 <p class="align-left">{{order.name}}</p>
+                            </ion-col>
+                            <ion-col size="2">
+                                <p>{{order.amount}}x</p>
                             </ion-col>
                             <ion-col size="2">
                                 <p>{{order.price | currency: "EUR":"symbol":"":"fr"}}</p>
@@ -52,8 +58,15 @@
                     </div>
                 </ion-list>
 
-                <ion-button *ngIf="orders.length" (click)="onDownloadPDF()">
-                    Protokoll als PDF herunterladen</ion-button>
+                <ion-row>
+                    <ion-col size="4" offset="8">
+                        <p class="align-right bill" *ngIf="bill">
+                            Tagesumsatz: {{bill | currency: "EUR":"symbol":"":"fr"}}
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-button *ngIf="orders.length" (click)="onDownloadPDF()">
+                    Protokoll als PDF herunterladen</ion-button> -->
             </ion-col>
         </ion-row>
     </ion-grid>

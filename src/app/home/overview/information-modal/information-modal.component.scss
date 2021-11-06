@@ -16,8 +16,9 @@ ion-content {
             margin: 25px 25px 0px 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 600;
+            font-weight: 700;
             color: rgb(68, 68, 68);
+            font-family: 'Poppins';
         }
         p {
             text-transform: uppercase;
@@ -54,6 +55,42 @@ ion-content {
             --border-radius: 15px;
             --background: coral;
             --box-shadow: none
+        }
+        .action-row {
+            justify-content: space-evenly;
+            .action-card {
+                width: 25%;
+                height: 10rem;
+                background-color: lightcoral;
+                border-radius: 20px;
+                align-items: center;
+                position: relative;
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+                .content {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0%, -50%);
+                    ion-row {
+                        width: 100%;
+                        align-items: center;
+                        flex-direction: column;
+                        span {
+                            color: white;
+                            font-size: 3rem;
+                        }
+                        p {
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            color: white;
+                            margin-top: 1rem;
+                            font-size: 1.1rem;
+                            letter-spacing: 1px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
         }
         #secondary-color {
             --background: rgb(80, 106, 255);

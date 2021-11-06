@@ -1,22 +1,31 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-            <ion-col size="8" offset="2">
-                <h2>Einstellungen</h2>
-                <ion-list>
-                    <!-- <ion-item>
-                        <ion-label>Akzentfarbe</ion-label>
-                        <ion-icon name="color-palette-outline"></ion-icon>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Layout</ion-label>
-                        <ion-icon name="layers-outline"></ion-icon>
-                    </ion-item> -->
-                    <ion-item>
-                        <ion-label (click)="openLogoutSetting()">Abmelden</ion-label>
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </ion-item>
-                </ion-list>
+            <ion-col size="10" offset="1">
+                <h1>Einstellungen</h1>
+                <h2>Startseite</h2>
+                <ion-item>
+                    <ion-label (click)="openTitleModal()">Willkommensnachricht</ion-label>
+                    <span class="material-icons"> title </span>
+                </ion-item>
+                <ion-item>
+                    <ion-label (click)="openFontModal()">Schriftart</ion-label>
+                    <span class="material-icons"> format_italic </span>
+                </ion-item>
+                <ion-item>
+                    <ion-label (click)="openBackgroundImgModal()">Hintergrundbild</ion-label>
+                    <span class="material-icons"> image </span>
+                </ion-item>
+                <ion-item>
+                    <ion-label (click)="openColorModal()">Farbauswahl</ion-label>
+                    <span class="material-icons"> palette </span>
+                </ion-item>
+                <h2>Account</h2>
+                <ion-item>
+                    <ion-label (click)="openLogoutSetting()">Abmelden</ion-label>
+                    <span class="material-icons"> logout </span>
+                </ion-item>
+                <ion-list> </ion-list>
             </ion-col>
         </ion-row>
     </ion-grid>

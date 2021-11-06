@@ -8,9 +8,10 @@ import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import { SettingsPage } from './settings.page';
 import { LogoutSettingComponent } from './logout-setting/logout-setting.component';
+import { FontModalComponent } from './font-modal/font-modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, SettingsPageRoutingModule],
-  declarations: [SettingsPage, LogoutSettingComponent],
+  declarations: [SettingsPage, FontModalComponent],
 })
 export class SettingsPageModule {}

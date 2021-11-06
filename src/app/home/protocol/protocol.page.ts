@@ -85,6 +85,8 @@ export class ProtocolPage implements OnInit, OnDestroy {
   onNextDay() {
     this.selectedTimestamp = this.selectedTimestamp + 86400000;
 
+    this.bill = null;
+
     this.roundTime();
 
     this.getOrders();
@@ -94,6 +96,8 @@ export class ProtocolPage implements OnInit, OnDestroy {
 
   onPreviousDay() {
     this.selectedTimestamp = this.selectedTimestamp - 86400000;
+
+    this.bill = null;
 
     this.roundTime();
 
@@ -215,7 +219,6 @@ export class ProtocolPage implements OnInit, OnDestroy {
             fetchedOrder.isAccepted
         );
 
-        // CHECK IF ORDER IS ACCEPTED
         if (
           fetchedOrder.orderTimestamp > this.selectedTimestamp &&
           fetchedOrder.orderTimestamp < this.selectedTimestamp + 86400000
@@ -233,7 +236,9 @@ export class ProtocolPage implements OnInit, OnDestroy {
               this.beverages.push(fetchedOrder);
             }
           }
-          this.bill = this.bill + fetchedOrder.price;
+          this.bill = this.bill + fetchedOrder.price * fetchedOrder.amount;
+          console.log('BILL');
+          console.log(this.bill);
         }
       }
     });

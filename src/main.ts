@@ -4,6 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+import 'material-icons/iconfont/material-icons.css';
+
 if (environment.production) {
   enableProdMode();
 }

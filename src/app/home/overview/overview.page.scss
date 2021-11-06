@@ -1,8 +1,28 @@
+ion-content {
+    --background: rgb(59, 59, 59);
+    img {
+        filter: blur(5px);
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+    }
+}
+
 ion-grid {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.myOverlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99;
+    bottom: 0px;
+    color: #fff;
 }
 
 .main-row {
@@ -43,10 +63,6 @@ ion-col {
     position: absolute;
     z-index: 99;
     bottom: 0px;
-}
-
-ion-content.background {
-    --background: url('/assets/images/home-background.jpg') 0 0/100% 100% no-repeat;
 }
 
 ion-list {
