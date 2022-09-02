@@ -9,9 +9,10 @@ import { SettingsPageRoutingModule } from './settings-routing.module';
 import { SettingsPage } from './settings.page';
 import { LogoutSettingComponent } from './logout-setting/logout-setting.component';
 import { FontModalComponent } from './font-modal/font-modal.component';
+import { TitleModalComponent } from './title-modal/title-modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, SettingsPageRoutingModule],
-  declarations: [SettingsPage, FontModalComponent],
+  declarations: [SettingsPage, FontModalComponent, TitleModalComponent],
 })
 export class SettingsPageModule {}

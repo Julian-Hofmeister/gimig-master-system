@@ -1,3 +1,21 @@
-<p>
-  title-modal works!
-</p>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h2>Willkommensnachricht</h2>
+
+                <ion-item>
+                    <ion-input [maxlength]="maxLength" [(ngModel)]="welcomeMessage" (change)="onChange()"></ion-input>
+                    <ion-label>{{ welcomeMessage.length }}/{{ maxLength }}</ion-label>
+                </ion-item>
+                <div class="space"></div>
+                <ion-col>
+                    <ion-button (click)="onSave()"> Speichern </ion-button>
+                    <ion-button (click)="onDismiss()" class="dismiss">
+                        Abbrechen
+                    </ion-button>
+                </ion-col>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

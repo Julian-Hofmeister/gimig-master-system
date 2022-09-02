@@ -125,6 +125,15 @@
     display: block;
 }
 
+.small-setting-css .modal-wrapper {
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    border-radius: 20px;
+    position: absolute;
+    display: block;
+}
+
 // ----------------------------------------------------
 @font-face {
     font-family: 'Poppins';

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { LogoutSettingComponent } from './logout-setting/logout-setting.component';
 import { FontModalComponent } from './font-modal/font-modal.component';
+import { TitleModalComponent } from './title-modal/title-modal.component';
 
 @Component({
   selector: 'app-settings',
@@ -56,14 +57,14 @@ export class SettingsPage {
   // ----------------------------------------------------------------------------------------------
 
   openTitleModal() {
-    // this.modalCtrl
-    //   .create({
-    //     component: TitleModalComponent,
-    //     cssClass: 'logout-confirm-css',
-    //   })
-    //   .then((modalEl) => {
-    //     modalEl.present();
-    //   });
+    this.modalCtrl
+      .create({
+        component: TitleModalComponent,
+        cssClass: 'small-setting-css',
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
   }
 
   // ----------------------------------------------------------------------------------------------

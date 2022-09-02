@@ -27,6 +27,8 @@ export class InformationModalComponent implements OnInit, OnDestroy {
 
   food: Order[] = [];
 
+  loadedOrders: Order[] = [];
+
   bill = 0;
 
   //#endregion
@@ -80,7 +82,7 @@ export class InformationModalComponent implements OnInit, OnDestroy {
       .create({
         component: ResetConfirmModalComponent,
         cssClass: 'reset-confirm-css',
-        componentProps: { table: this.table },
+        componentProps: { table: this.table, loadedOrders: this.loadedOrders },
       })
       .then((modalEl) => {
         modalEl.present();
@@ -168,10 +170,18 @@ export class InformationModalComponent implements OnInit, OnDestroy {
             acceptTimestamp: order.acceptTimestamp,
             payTimestamp: order.payTimestamp,
 
+            selectedOptions: order.selectedOptions,
+            availableOptions: order.availableOptions,
+
+            selectedOptions2: order.selectedOptions2,
+            availableOptions2: order.availableOptions2,
+
             isFinished: order.isFinished,
           };
 
           console.log(fetchedOrder);
+
+          this.loadedOrders.push(fetchedOrder);
 
           this.bill = this.bill + fetchedOrder.price;
 

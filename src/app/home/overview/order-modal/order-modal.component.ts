@@ -170,7 +170,15 @@ export class OrderModalComponent implements OnInit, OnDestroy {
             payTimestamp: order.payTimestamp,
 
             isFinished: order.isFinished,
+
+            selectedOptions: order.selectedOptions,
+            availableOptions: order.availableOptions,
+
+            selectedOptions2: order.selectedOptions2,
+            availableOptions2: order.availableOptions2,
           };
+
+          console.log(fetchedOrder);
 
           this.allOrders.push(fetchedOrder);
 

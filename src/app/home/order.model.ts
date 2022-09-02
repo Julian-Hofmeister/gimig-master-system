@@ -23,4 +23,10 @@ export interface Order {
   payTimestamp: number;
 
   isFinished: boolean;
+
+  selectedOptions?: string[];
+  availableOptions?: string[];
+
+  selectedOptions2?: string[];
+  availableOptions2?: string[];
 }

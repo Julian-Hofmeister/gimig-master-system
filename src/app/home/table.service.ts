@@ -207,7 +207,7 @@ export class TableService {
 
   // ----------------------------------------------------------------------------------------------
 
-  resetTable(table: Table) {
+  resetTable(table: Table, loadedOrders: Order[]) {
     const tableDocument = this.tableCollection.doc(
       table.tableNumber.toString()
     );
@@ -228,17 +228,52 @@ export class TableService {
       payRequestTimestamp: null,
     });
 
-    // const orderSub = this.getOrders(table).subscribe((loadedOrders) => {
-    //   for (const order of loadedOrders) {
-    //     const orderDoc = this.orderCollection.doc(order.id);
+    console.log('Order: ' + loadedOrders);
 
-    //     orderDoc.update({
-    //       isPaid: true,
-    //       payTimestamp: Date.now(),
-    //     });
+    loadedOrders.forEach((item) => {
+      this.path
+        .collection('tables')
+        .doc('{{table.tableNumber}}')
+        .collection('orderedCart')
+        .doc(item.id)
+        .delete();
+      console.log(item.id + 'DELETED');
+    });
+
+    // this.orderedList.forEach((order) => {
+    //   this.orderedCartCollection.doc(order).delete();
+    // });
+
+    // const orderSub = this.getCartOrders(table.tableNumber).subscribe(
+    //   (orders) => {
+    //     console.log(orders);
+
+    //     for (const order of orders) {
+    //       this.afs
+    //         .collection('tables')
+    //         .doc(table.tableNumber)
+    //         .collection('orderedCart')
+    //         .doc(order.id)
+    //         .delete();
+    //     }
+
+    //     orderSub.unsubscribe();
     //   }
+    // );
 
-    //   orderSub.unsubscribe();
+    // // const orderSub = this.getOrders(table).subscribe((loadedOrders) => {
+    // //   console.log(loadedOrders);
+
+    // for (const order of loadedOrders) {
+    //   const orderDoc = this.orderCollection.doc(order.id);
+
+    //   orderDoc.update({
+    //     isPaid: true,
+    //     payTimestamp: Date.now(),
+    //   });
+    // }
+
+    // orderSub.unsubscribe();
     // });
   }
 
