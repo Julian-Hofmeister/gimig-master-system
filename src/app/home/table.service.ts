@@ -233,11 +233,10 @@ export class TableService {
     loadedOrders.forEach((item) => {
       this.path
         .collection('tables')
-        .doc('{{table.tableNumber}}')
+        .doc(table.tableNumber.toString())
         .collection('orderedCart')
         .doc(item.id)
         .delete();
-      console.log(item.id + 'DELETED');
     });
 
     // this.orderedList.forEach((order) => {
