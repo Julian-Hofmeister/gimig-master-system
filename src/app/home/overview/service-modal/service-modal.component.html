@@ -7,7 +7,8 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <h2>Tisch {{ table.tableNumber }} benötigt eine Bedienung</h2>
+                <h2>Tisch {{ table.tableNumber }}</h2>
+                <h2 class="big">{{ table.serviceMessage }}</h2>
                 <p>vor {{ passedTime | date: "m" }}min</p>
             </ion-col>
         </ion-row>

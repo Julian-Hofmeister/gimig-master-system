@@ -102,22 +102,7 @@ export class OverviewPage implements OnInit, OnDestroy {
 
       for (const table of allTables) {
         const fetchedTable: Table = {
-          tableNumber: table.tableNumber,
-          orderRequest: table.orderRequest,
-          payRequest: table.payRequest,
-          serviceRequest: table.serviceRequest,
-          orderTime: table.orderTime,
-          serviceTimestamp: table.serviceTimestamp,
-          payRequestTimestamp: table.payRequestTimestamp,
-          status: table.status,
-          ableToPay: table.ableToPay,
-          paysTogether: table.paysTogether,
-          paysCache: table.paysCache,
-          isServed: table.isServed,
-          isPaid: table.isPaid,
-          isAccepted: table.isAccepted,
-          resetRequest: table.resetRequest,
-          id: table.id,
+          ...table,
         };
 
         if (table.orderRequest || table.payRequest || table.serviceRequest) {

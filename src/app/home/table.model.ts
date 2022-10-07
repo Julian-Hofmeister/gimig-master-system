@@ -3,10 +3,12 @@ export interface Table {
   orderRequest: boolean;
   payRequest: boolean;
   serviceRequest: boolean;
+  serviceMessage: string;
 
   orderTime: Date;
   serviceTimestamp: number;
   payRequestTimestamp: number;
+
   status: string;
 
   ableToPay: boolean;
